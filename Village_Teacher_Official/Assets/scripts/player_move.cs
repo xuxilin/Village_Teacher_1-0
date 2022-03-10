@@ -10,6 +10,19 @@ public class player_move : MonoBehaviour
     Vector2 move;
     Vector3 rotate;
 
+    //Stay Inside script objects
+    public GameObject topRightLimitGameObject;
+    public GameObject bottomLeftLimitGameObject;
+
+    private Vector3 topRightLimit;
+    private Vector3 bottomLeftLimit;
+
+    void Start()
+    {
+        topRightLimit = topRightLimitGameObject.transform.position;
+        bottomLeftLimit = bottomLeftLimitGameObject.transform.position;
+    }
+
     private void FixedUpdate()
     {
         move = new Vector2(Input.GetAxisRaw("Horizontal"), 0);
@@ -41,9 +54,9 @@ public class player_move : MonoBehaviour
         {
             //transform.localRotation = Quaternion.Euler(0, 180.0f, 0);
         }
-        // transform.rotation = Quaternion.LookRotation(move);
-       // transform.localRotation = Quaternion.Euler(0, -180.0f, 0);
+      
         transform.Translate(move * speed * Time.deltaTime);
+        transform.position = new Vector3(Mathf.Clamp(transform.position.x, bottomLeftLimit.x, topRightLimit.x), Mathf.Clamp(transform.position.y, bottomLeftLimit.y, topRightLimit.y), transform.position.z);
     }
     
 
