@@ -14,6 +14,7 @@ public class player_move : MonoBehaviour
     public GameObject topRightLimitGameObject;
     public GameObject bottomLeftLimitGameObject;
 
+    
     private Vector3 topRightLimit;
     private Vector3 bottomLeftLimit;
 
@@ -44,7 +45,7 @@ public class player_move : MonoBehaviour
         }
 
 
-
+        
         if (move.x < 0)
         {
             //transform.localRotation = Quaternion.Euler(0, -180.0f, 0);
