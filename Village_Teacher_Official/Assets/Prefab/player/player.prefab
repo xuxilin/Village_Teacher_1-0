@@ -144,7 +144,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 5791239417312577701}
-  speed: 8
+  speed: 5
   topRightLimitGameObject: {fileID: 0}
   bottomLeftLimitGameObject: {fileID: 0}
 --- !u!50 &467953677991554722
