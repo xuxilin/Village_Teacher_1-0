@@ -4,11 +4,14 @@ using UnityEngine.Events;
 public class player_move : MonoBehaviour
 
 {
+
+    public GameObject interactableIcon;
     public Animator animator;
     public float speed = 10;
     bool facingLeft;
     Vector2 move;
     Vector3 rotate;
+    private Vector2 boxSize = new Vector2(0.1f,1f);
 
     //Stay Inside script objects
     public GameObject topRightLimitGameObject;
@@ -24,6 +27,15 @@ public class player_move : MonoBehaviour
         bottomLeftLimit = bottomLeftLimitGameObject.transform.position;
     }
 
+    void Update()
+    {
+
+        if(Input.GetKeyDown(KeyCode.E))
+        {
+            CheckInteraction();
+        }
+
+    }
     private void FixedUpdate()
     {
         move = new Vector2(Input.GetAxisRaw("Horizontal"), 0);
@@ -60,5 +72,31 @@ public class player_move : MonoBehaviour
         transform.position = new Vector3(Mathf.Clamp(transform.position.x, bottomLeftLimit.x, topRightLimit.x), Mathf.Clamp(transform.position.y, bottomLeftLimit.y, topRightLimit.y), transform.position.z);
     }
     
+    public void OpenInteractableIcon()
+    {
+        interactableIcon.SetActive(true);
+    }
+
+    public void CloseInteractableIcon()
+    {
+        interactableIcon.SetActive(false);
+    }
+
+    private void CheckInteraction()
+    {
+        RaycastHit2D[] hits = Physics2D.BoxCastAll(transform.position,boxSize,0,Vector2.zero);
+
+        if(hits.Length > 0)
+        {
+            foreach(RaycastHit2D rc in hits)
+            {
+                if(rc.isInteractable())
+                {
+                    rc.Interact();
+                    return;
+                }
+            }
+        }
+    }
 
 }

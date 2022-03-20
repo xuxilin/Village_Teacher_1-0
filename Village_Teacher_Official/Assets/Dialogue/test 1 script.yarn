@@ -1,0 +1,62 @@
+﻿title: Start
+---
+<<set $hasClueA to false>>
+<<set $hasClueB to false>>
+<<set $hasClueC to false>>
+elder: Welcome to the game! Unfortunately, you're just in time for an unsolved mystery...
+elder: You'll have to speak to these three to figure out what happened!
+===
+title: StudentA
+---
+StudentA: What do you want to know?
+-> Something that will get me no clues?
+-> Something that will get me Clue A? <<if not $hasClueA>>
+    <<set $hasClueA to true>>
+-> Something relating to existing Clue A? <<if $hasClueA>>
+-> Something relating to existing Clue B? <<if $hasClueB>>
+-> Something relating to existing Clue C? <<if $hasClueC>>
+StudentA: ~additional dialogue~
+StudentA: Ok, bye!
+===
+title: StudentB
+---
+StudentB: What do you want to know?
+-> Something that will get me no clues?
+-> Something that will get me Clue B? <<if $hasClueA and not $hasClueB>>
+    <<set $hasClueB to true>>
+-> Something relating to existing Clue A? <<if $hasClueA>>
+-> Something relating to existing Clue B? <<if $hasClueB>>
+-> Something relating to existing Clue C? <<if $hasClueC>>
+StudentB: ~additional dialogue~
+StudentB: Ok, bye!
+===
+title: StudentC
+---
+StudentC: What do you want to know?
+-> Something that will get me no clues?
+-> Something that will get me Clue C? <<if $hasClueB and not $hasClueC>>
+    <<set $hasClueC to true>>
+-> Something relating to existing Clue A? <<if $hasClueA>>
+-> Something relating to existing Clue B? <<if $hasClueB>>
+-> Something relating to existing Clue C? <<if $hasClueC>>
+StudentC: ~additional dialogue~
+StudentC: Ok, bye!
+===
+title: elder
+---
+elder: Are you ready to tell me what happened?
+-> Yes
+    elder: Well, what do you know?
+    -> I have no clues.
+    -> I have clue A. <<if $hasClueA>>
+    -> I have clues A and B. <<if $hasClueB>>
+    -> I have clues A, B and C. <<if $hasClueC>>
+        <<jump Ending>>
+    elder: That doesn't sound right...
+-> No
+elder: Go on and speak to those three!
+===
+title: Ending
+---
+elder: You solved it!
+===
