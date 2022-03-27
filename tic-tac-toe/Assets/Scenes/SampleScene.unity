@@ -689,6 +689,8 @@ MonoBehaviour:
   non_act_playercolor:
     panelColor: {r: 0.21568628, g: 0.25882354, b: 0.3019608, a: 1}
     textColor: {r: 0, g: 0.8, b: 0.8, a: 1}
+  playerMove: 0
+  delay: 0
 --- !u!4 &615339052
 Transform:
   m_ObjectHideFlags: 0
@@ -1480,7 +1482,7 @@ MonoBehaviour:
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 0.399
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
