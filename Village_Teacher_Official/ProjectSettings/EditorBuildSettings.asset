@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/school.unity
+    guid: b6573653639f33a45803ba80c7439aaf
+  - enabled: 1
     path: Assets/Scenes/Main Street.unity
     guid: cf3e2e44e2da53c43820fa62e151f7d2
   - enabled: 1
@@ -17,9 +20,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Mountain.unity
     guid: aaeb19ec662e7cd4fae3936fb5fc40b4
-  - enabled: 1
-    path: Assets/Scenes/school.unity
-    guid: b6573653639f33a45803ba80c7439aaf
   - enabled: 1
     path: Assets/Scenes/dorm.unity
     guid: 0555c0353355c914b9efffb071ca7616
