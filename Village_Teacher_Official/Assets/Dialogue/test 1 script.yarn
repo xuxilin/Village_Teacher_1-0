@@ -3,60 +3,60 @@
 <<set $hasClueA to false>>
 <<set $hasClueB to false>>
 <<set $hasClueC to false>>
-elder: Welcome to the game! Unfortunately, you're just in time for an unsolved mystery...
-elder: You'll have to speak to these three to figure out what happened!
+旁白: 清晨6:30。
+旁白: 你被闹钟叫醒
 ===
-title: StudentA
+title: 赵天天
 ---
-StudentA: What do you want to know?
+赵天天: What do you want to know?
 -> Something that will get me no clues?
 -> Something that will get me Clue A? <<if not $hasClueA>>
     <<set $hasClueA to true>>
 -> Something relating to existing Clue A? <<if $hasClueA>>
 -> Something relating to existing Clue B? <<if $hasClueB>>
 -> Something relating to existing Clue C? <<if $hasClueC>>
-StudentA: ~additional dialogue~
-StudentA: Ok, bye!
+赵天天: ~additional dialogue~
+赵天天: Ok, bye!
 ===
-title: StudentB
+title: 赵家豪
 ---
-StudentB: What do you want to know?
+赵家豪: What do you want to know?
 -> Something that will get me no clues?
 -> Something that will get me Clue B? <<if $hasClueA and not $hasClueB>>
     <<set $hasClueB to true>>
 -> Something relating to existing Clue A? <<if $hasClueA>>
 -> Something relating to existing Clue B? <<if $hasClueB>>
 -> Something relating to existing Clue C? <<if $hasClueC>>
-StudentB: ~additional dialogue~
-StudentB: Ok, bye!
+赵家豪: ~additional dialogue~
+赵家豪: Ok, bye!
 ===
-title: StudentC
+title: 吴杰
 ---
-StudentC: What do you want to know?
+吴杰: What do you want to know?
 -> Something that will get me no clues?
 -> Something that will get me Clue C? <<if $hasClueB and not $hasClueC>>
     <<set $hasClueC to true>>
 -> Something relating to existing Clue A? <<if $hasClueA>>
 -> Something relating to existing Clue B? <<if $hasClueB>>
 -> Something relating to existing Clue C? <<if $hasClueC>>
-StudentC: ~additional dialogue~
-StudentC: Ok, bye!
+吴杰: ~additional dialogue~
+吴杰: Ok, bye!
 ===
-title: elder
+title: 旁白
 ---
-elder: Are you ready to tell me what happened?
+旁白: Are you ready to tell me what happened?
 -> Yes
-    elder: Well, what do you know?
+    旁白: Well, what do you know?
     -> I have no clues.
     -> I have clue A. <<if $hasClueA>>
     -> I have clues A and B. <<if $hasClueB>>
     -> I have clues A, B and C. <<if $hasClueC>>
         <<jump Ending>>
-    elder: That doesn't sound right...
+    旁白: That doesn't sound right...
 -> No
-elder: Go on and speak to those three!
+旁白: Go on and speak to those three!
 ===
 title: Ending
 ---
-elder: You solved it!
+旁白: You solved it!
 ===
