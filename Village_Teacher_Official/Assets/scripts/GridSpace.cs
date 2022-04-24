@@ -14,6 +14,7 @@ public class GridSpace : MonoBehaviour {
             buttontext.text = gameController.GetPlayerside();
             button.interactable = false;
             gameController.EndTurn();
+            FindObjectOfType<audio_manager>().Play("X");
         }
         
     }

@@ -34,21 +34,30 @@ public class GameController : MonoBehaviour
 
     private string playerside;
     private string computerside;
-    public bool playerMove;
+    public bool playerMove = false;
     public float delay;
     private int value;
     bool wins = false;
     private int count;
+
     void Awake()
     {
+        
         GameOver.SetActive(false);
         SetGameControllerReferenceOnButton();
         playerside = "X";
         Restart.SetActive(false);
         SetPLayerColor(playerX, playerO);
-        playerMove = true;
         computerside = "O";
+        
     }
+    
+    private void Start()
+    {
+        FindObjectOfType<audio_manager>().Play("kaishi");
+        playerMove = true;
+    }
+
     /*
     private void Update()//Easy
     {
@@ -78,9 +87,9 @@ public class GameController : MonoBehaviour
            
         }
     }*/
-    
+
     private void Update()//Med
-    {
+    {   
         if (!playerMove && !wins)
         {
             delay += delay * Time.deltaTime;
@@ -88,6 +97,7 @@ public class GameController : MonoBehaviour
             {
                 value = check_move1(buttonList);
                 buttonList[value].text = GetComputerside();
+                FindObjectOfType<audio_manager>().Play("O");
                 buttonList[value].GetComponentInParent<Button>().interactable = false;
                 EndTurn();
             }
