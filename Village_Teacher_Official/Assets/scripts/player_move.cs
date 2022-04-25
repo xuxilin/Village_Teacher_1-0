@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 public class player_move : MonoBehaviour
 
 {
-
+    Rigidbody2D rigidbody2d;
     public GameObject interactableIcon;
     public Animator animator;
     public float speed = 10;
@@ -28,11 +28,15 @@ public class player_move : MonoBehaviour
     {
         topRightLimit = topRightLimitGameObject.transform.position;
         bottomLeftLimit = bottomLeftLimitGameObject.transform.position;
+<<<<<<< Updated upstream
 
         if (!Save_and_load_system.instance.has_load) {
             Save_and_load_system.instance.SaveD.scene_num = 0;
         }
         //Debug.Log("_________________________________________________________________________________________");
+=======
+        rigidbody2d = GetComponent<Rigidbody2D>();
+>>>>>>> Stashed changes
     }
 
     void Update()
@@ -123,8 +127,13 @@ public class player_move : MonoBehaviour
         }
 
         transform.Translate(move * speed * Time.deltaTime);
+<<<<<<< Updated upstream
         transform.position = new Vector3(Mathf.Clamp(transform.position.x, bottomLeftLimit.x, topRightLimit.x), Mathf.Clamp(transform.position.y, bottomLeftLimit.y, topRightLimit.y), transform.position.z);;
 
+=======
+        transform.position = new Vector3(Mathf.Clamp(transform.position.x, bottomLeftLimit.x, topRightLimit.x), Mathf.Clamp(transform.position.y, bottomLeftLimit.y, topRightLimit.y), transform.position.z);
+        rigidbody2d.MovePosition(transform.position);
+>>>>>>> Stashed changes
     }
     
     public void OpenInteractableIcon()
